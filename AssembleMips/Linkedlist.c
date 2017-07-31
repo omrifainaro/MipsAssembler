@@ -6,17 +6,17 @@ LINKED_LIST* newList() {
 	return list;
 }
 
-NODE* newNode(ITEM* item) {
+NODE* newNode(ITEM item) {
 	NODE* node = (NODE*)malloc(sizeof(NODE));
 	node->item = item;
 	node->next = NULL;
 	return node;
 }
 
-ITEM* newItem(char key[], int value) {
-	ITEM* item = (ITEM*)malloc(sizeof(ITEM));
-	strcpy(item->key, key);
-	item->value = value;
+ITEM newItem(char key[], int value) {
+	ITEM item;
+	strcpy(item.key, key);
+	item.value = value;
 	return item;
 }
 
@@ -31,8 +31,8 @@ void append(LINKED_LIST* list, NODE* node) {
 	}
 }
 
-void printItem(ITEM* item) {
-	printf("{'%s': '%x'}", item->key, item->value);
+void printItem(ITEM item) {
+	printf("{'%s': '%x'}", item.key, item.value);
 }
 
 void printList(LINKED_LIST* list) {
@@ -45,10 +45,10 @@ void printList(LINKED_LIST* list) {
 	printf("NULL");
 }
 
-int isEqual(ITEM* item, char key[]) {
+int isEqual(ITEM item, char key[]) {
 	int i = 0;
 	for (; i < MAX_NAME && key[i] != '\0'; i++) {
-		if (item->key[i] != key[i]) {
+		if (item.key[i] != key[i]) {
 			return FALSE;
 		}
 	}

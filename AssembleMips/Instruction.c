@@ -2,7 +2,7 @@
 
 void initInstructionsTable() {
 	instructions = newTable(20);
-	ITEM* cur = NULL;
+	ITEM cur;
 	int i = 0;
 	for (; i < NUMBER_OF_R_OPCODES; i++) {
 		cur = newItem(rFunctionCode[i].name, rFunctionCode[i].code);

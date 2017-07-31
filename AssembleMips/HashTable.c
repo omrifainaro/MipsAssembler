@@ -20,8 +20,8 @@ HASHTABLE* newTable(int size) {
 	return table;
 }
 
-void insert(HASHTABLE* table, ITEM* item) {
-	unsigned int index = hashkey(item->key, table->size);
+void insert(HASHTABLE* table, ITEM item) {
+	unsigned int index = hashkey(item.key, table->size);
 	append(table->elements[index], newNode(item));
 }
 
@@ -31,7 +31,7 @@ int getValue(HASHTABLE* table, char key[]) {
 	NODE* cur = list->first;
 	for (; cur != NULL; cur = cur->next) {
 		if (isEqual(cur->item, key)) {
-			return cur->item->value;
+			return cur->item.value;
 		}
 	}
 	return NOT_IN_HASH_TABLE;
