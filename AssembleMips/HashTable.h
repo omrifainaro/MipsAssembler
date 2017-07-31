@@ -11,3 +11,4 @@ HASHTABLE* newTable(int size);
 void insert(HASHTABLE* table, ITEM item);
 int getValue(HASHTABLE* table, char key[]);
 void printTable(HASHTABLE* table);
+void removeTable(HASHTABLE* table);

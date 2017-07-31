@@ -32,7 +32,7 @@ void append(LINKED_LIST* list, NODE* node) {
 }
 
 void printItem(ITEM item) {
-	printf("{'%s': '%x'}", item.key, item.value);
+	printf("{'%s': 0x%x}", item.key, item.value);
 }
 
 void printList(LINKED_LIST* list) {
@@ -53,4 +53,14 @@ int isEqual(ITEM item, char key[]) {
 		}
 	}
 	return TRUE;
+}
+
+void removeList(LINKED_LIST* list) {
+	NODE* cur = list->first;
+	NODE* next;
+	while (cur != NULL) {
+		next = cur->next;
+		free(cur);
+		cur = next;
+	}
 }
