@@ -55,7 +55,7 @@ int isEqual(ITEM item, char key[]) {
 	return TRUE;
 }
 
-void removeList(LINKED_LIST* list) {
+void delete(LINKED_LIST* list) {
 	NODE* cur = list->first;
 	NODE* next;
 	while (cur != NULL) {
@@ -63,4 +63,23 @@ void removeList(LINKED_LIST* list) {
 		free(cur);
 		cur = next;
 	}
+}
+
+void removeFromList(LINKED_LIST* list, char key[]) {
+	NODE* cur = list->first;
+	NODE* toDelete;
+	if (isEqual(cur->item, key)) {
+		toDelete = cur;
+		list->first = toDelete->next;
+	}
+	else {
+		while (cur->next != NULL) {
+			if (isEqual(cur->next->item, key)) {
+				toDelete = cur->next;
+				cur->next = toDelete->next;
+			}
+			cur = cur->next;
+		}
+	}
+	free(toDelete);
 }

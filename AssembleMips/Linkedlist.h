@@ -25,4 +25,5 @@ void append(LINKED_LIST* list, NODE* node);
 void printList(LINKED_LIST* list);
 void printItem(ITEM item);
 int isEqual(ITEM item, char key[]);
-void removeList(LINKED_LIST* list);
+void removeFromList(LINKED_LIST* list, char key[]);
+void delete(LINKED_LIST* list);

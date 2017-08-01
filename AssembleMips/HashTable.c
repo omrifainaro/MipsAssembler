@@ -25,6 +25,11 @@ void insert(HASHTABLE* table, ITEM item) {
 	append(table->elements[index], newNode(item));
 }
 
+void remove(HASHTABLE* table, char key[]) {
+	int index = hashkey(key, table->size);
+	removeFromList(table->elements[index], key);
+}
+
 int getValue(HASHTABLE* table, char key[]) {
 	int index = hashkey(key, table->size);
 	LINKED_LIST* list = table->elements[index];
@@ -49,6 +54,6 @@ void printTable(HASHTABLE* table) {
 void removeTable(HASHTABLE* table) {
 	int i = 0;
 	for (; i < table->size; i++) {
-		removeList(table->elements[i]);
+		delete(table->elements[i]);
 	}
 }

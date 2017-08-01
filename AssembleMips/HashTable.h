@@ -9,6 +9,7 @@ typedef struct {
 unsigned int hashkey(unsigned char key[], int size);
 HASHTABLE* newTable(int size);
 void insert(HASHTABLE* table, ITEM item);
+void remove(HASHTABLE* table, char key[]);
 int getValue(HASHTABLE* table, char key[]);
 void printTable(HASHTABLE* table);
 void removeTable(HASHTABLE* table);
