@@ -1,4 +1,6 @@
-#pragma once
+#ifndef HASH_TABLE_H
+#define HASH_TABLE_H
+
 #include "Linkedlist.h"
 
 typedef INSTRUCTION(*pCallbackParser)(char* instruct);
@@ -17,3 +19,5 @@ int getValue(HASHTABLE* table, char key[]);
 ITEM getItem(HASHTABLE* table, char key[]);
 void printTable(HASHTABLE* table);
 void removeTable(HASHTABLE* table);
+
+#endif // !LINKED_LIST_H

@@ -1,11 +1,11 @@
-#pragma once
+#ifndef LINKED_LIST_H
+#define LINKED_LIST_H
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "Constants.h"
 #include "Instruction.h"
-
-typedef INSTRUCTION(*pCallbackParser)(char* instruct);
 
 typedef struct _ITEM{
 	char key[MAX_NAME];
@@ -35,3 +35,5 @@ void printItem(ITEM item);
 int isEqual(ITEM item, char key[]);
 void removeFromList(LINKED_LIST* list, char key[]);
 void delete(LINKED_LIST* list);
+
+#endif

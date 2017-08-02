@@ -1,4 +1,6 @@
-#pragma once
+#ifndef INSTRUCTION_H
+#define INSTRUCTION_H
+
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -47,14 +49,13 @@ typedef struct {
 HASHTABLE* instructions;
 HASHTABLE* registers;
 
-void initTables();
 INSTRUCTION parseArithmeticInstruction(char* instruction);
 INSTRUCTION parseArithmeticInstructionShift(char* instruction);
 INSTRUCTION parseImmArithmeticInstruction(char* instruction);
 INSTRUCTION dummy(char* instruction);
 
 static INST_INFO functionCode[NUMBER_OF_OPCODES] = {
-	{ 0x0, "SLL\0",  dummy},
+	{ 0x0, "SLL\0",  dummy },
 	{ 0x2, "SRL\0", dummy },
 	{ 0x3, "SRA\0", dummy },
 	{ 0x4, "SLLV\0", dummy },
@@ -104,3 +105,7 @@ static INST_INFO functionCode[NUMBER_OF_OPCODES] = {
 	{ 0x29, "SH\0", dummy },
 	{ 0x2b, "SW\0", dummy }
 };
+
+void initTables();
+
+#endif

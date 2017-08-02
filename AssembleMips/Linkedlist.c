@@ -1,7 +1,8 @@
 #include "Linkedlist.h"
 
 LINKED_LIST* newList() {
-	LINKED_LIST* list = (LINKED_LIST*) malloc(sizeof(LINKED_LIST));
+	LINKED_LIST* list;
+	list = (LINKED_LIST*)malloc(sizeof(LINKED_LIST));
 	list->first = NULL;
 	return list;
 }
