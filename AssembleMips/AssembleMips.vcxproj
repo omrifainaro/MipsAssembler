@@ -143,6 +143,7 @@
     <ClCompile Include="Instruction.c" />
     <ClCompile Include="Linkedlist.c" />
     <ClCompile Include="Main.c" />
+    <ClCompile Include="Utils.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Constants.h" />

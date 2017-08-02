@@ -30,16 +30,21 @@ void remove(HASHTABLE* table, char key[]) {
 	removeFromList(table->elements[index], key);
 }
 
+void update(HASHTABLE* table, char key[], pCallbackParser func) {
+	updateItem(table->elements[hashkey(key, table->size)], key, func);
+}
+
 int getValue(HASHTABLE* table, char key[]) {
 	int index = hashkey(key, table->size);
 	LINKED_LIST* list = table->elements[index];
-	NODE* cur = list->first;
-	for (; cur != NULL; cur = cur->next) {
-		if (isEqual(cur->item, key)) {
-			return cur->item.value;
-		}
-	}
-	return NOT_IN_HASH_TABLE;
+	return getValueFromList(list, key);
+}
+
+ITEM getItem(HASHTABLE* table, char key[]) {
+	int index = hashkey(key, table->size);
+	LINKED_LIST* list = table->elements[index];
+	ITEM* item = getItemFromList(list, key);
+	return *item;
 }
 
 void printTable(HASHTABLE* table) {

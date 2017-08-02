@@ -1,7 +1,7 @@
 #include "Linkedlist.h"
 
 LINKED_LIST* newList() {
-	LINKED_LIST* list = (LINKED_LIST*)malloc(sizeof(LINKED_LIST));
+	LINKED_LIST* list = (LINKED_LIST*) malloc(sizeof(LINKED_LIST));
 	list->first = NULL;
 	return list;
 }
@@ -13,10 +13,19 @@ NODE* newNode(ITEM item) {
 	return node;
 }
 
+ITEM newItem(char key[], int value, pCallbackParser pFunc) {
+	ITEM item;
+	strcpy(item.key, key);
+	item.value = value;
+	item.pFunc = pFunc;
+	return item;
+}
+
 ITEM newItem(char key[], int value) {
 	ITEM item;
 	strcpy(item.key, key);
 	item.value = value;
+	item.pFunc = NULL;
 	return item;
 }
 
@@ -43,6 +52,14 @@ void printList(LINKED_LIST* list) {
 		cur = cur->next;
 	}
 	printf("NULL");
+}
+
+void updateItem(LINKED_LIST* list, char key[], pCallbackParser parser) {
+	NODE* cur = list->first;
+	while (cur != NULL) {
+		cur = cur->next;
+		cur->item.pFunc = parser;
+	}
 }
 
 int isEqual(ITEM item, char key[]) {
@@ -82,4 +99,24 @@ void removeFromList(LINKED_LIST* list, char key[]) {
 		}
 	}
 	free(toDelete);
+}
+
+ITEM* getItemFromList(LINKED_LIST* list, char key[]) {
+	NODE* cur = list->first;
+	for (; cur != NULL; cur = cur->next) {
+		if (isEqual(cur->item, key)) {
+			return &cur->item;
+		}
+	}
+	return NULL;
+}
+
+int getValueFromList(LINKED_LIST* list, char key[]) {
+	NODE* cur = list->first;
+	for (; cur != NULL; cur = cur->next) {
+		if (isEqual(cur->item, key)) {
+			return cur->item.value;
+		}
+	}
+	return NOT_IN_HASH_TABLE;
 }
