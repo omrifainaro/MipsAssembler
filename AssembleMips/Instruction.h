@@ -40,7 +40,7 @@ typedef struct {
 	};
 } INSTRUCTION;
 
-static INST_INFO rFunctionCode[NUMBER_OF_R_OPCODES] = {
+static INST_INFO functionCode[NUMBER_OF_OPCODES] = {
 	{ 0x0, "SLL\0" },
 	{ 0x2, "SRL\0" },
 	{ 0x3, "SRA\0" },
@@ -67,10 +67,7 @@ static INST_INFO rFunctionCode[NUMBER_OF_R_OPCODES] = {
 	{ 0x26, "XOR\0" },
 	{ 0x27, "NOR\0" },
 	{ 0x29, "SLTU\0" },
-	{ 0x2a, "SLT\0" }
-};
-
-static INST_INFO ijFunctionCode[NUMBER_OF_IJ_OPCODES] = {
+	{ 0x2a, "SLT\0" },
 	{ 0x2, "J\0" },
 	{ 0x3, "JAL\0" },
 	{ 0x4, "BEQ\0" },

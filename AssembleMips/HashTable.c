@@ -45,3 +45,10 @@ void printTable(HASHTABLE* table) {
 		printf("]\n");
 	}
 }
+
+void removeTable(HASHTABLE* table) {
+	int i;
+	for (i = 0; i < table->size; i++) {
+		removeList(table->elements[i]);
+	}
+}

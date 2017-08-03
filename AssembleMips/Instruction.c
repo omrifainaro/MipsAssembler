@@ -4,12 +4,8 @@ void initInstructionsTable() {
 	instructions = newTable(20);
 	ITEM cur;
 	int i = 0;
-	for (; i < NUMBER_OF_R_OPCODES; i++) {
-		cur = newItem(rFunctionCode[i].name, rFunctionCode[i].code);
-		insert(instructions, cur);
-	}
-	for (i=0; i < NUMBER_OF_IJ_OPCODES; i++) {
-		cur = newItem(ijFunctionCode[i].name, ijFunctionCode[i].code);
+	for (; i < NUMBER_OF_OPCODES; i++) {
+		cur = newItem(functionCode[i].name, functionCode[i].code);
 		insert(instructions, cur);
 	}
 }

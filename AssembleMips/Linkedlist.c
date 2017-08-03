@@ -54,3 +54,13 @@ int isEqual(ITEM item, char key[]) {
 	}
 	return TRUE;
 }
+
+void removeList(LINKED_LIST* list) {
+	NODE *cur, *toDelete;
+	cur = list->first;
+	while (cur != NULL) {
+		toDelete = cur;
+		cur = cur->next;
+		free(toDelete);
+	}
+}

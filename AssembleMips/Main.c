@@ -8,6 +8,7 @@ int main(){
 	initInstructionsTable();
 	printTable(instructions);
 	printf("ADD: %x\n", getValue(instructions, "ADD"));
+	removeTable(instructions);
 	getchar();
 	return 1;
 }

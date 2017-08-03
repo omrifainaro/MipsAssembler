@@ -4,8 +4,7 @@
 #define FALSE 0
 #define MAX_NAME 8
 
-#define NUMBER_OF_R_OPCODES 27
-#define NUMBER_OF_IJ_OPCODES 22
+#define NUMBER_OF_OPCODES 49
 
 #define CODE_ERROR 7777
 #define NOT_IN_HASH_TABLE 6666
