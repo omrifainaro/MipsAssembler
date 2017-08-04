@@ -13,11 +13,34 @@ NODE* newNode(ITEM item) {
 	return node;
 }
 
-ITEM newItem(char key[], int value) {
+ITEM newItem(char key[], int value, callback func) {
 	ITEM item;
 	strcpy(item.key, key);
 	item.value = value;
+	item.func = func;
 	return item;
+}
+
+int getValueList(LINKED_LIST* list, char key[]) {
+	NODE* cur = list->first;
+	for (; cur != NULL; cur = cur->next) {
+		if (isEqual(cur->item, key)) {
+			return cur->item.value;
+		}
+	}
+	return NOT_IN_HASH_TABLE;
+}
+
+ITEM* getItemList(LINKED_LIST* list, char key[]) {
+	ITEM err;
+	NODE* cur = list->first;
+	for (; cur != NULL; cur = cur->next) {
+		if (isEqual(cur->item, key)) {
+			return &cur->item;
+		}
+	}
+	memset(&err, 0, 0);
+	return &err;
 }
 
 void append(LINKED_LIST* list, NODE* node) {
@@ -32,7 +55,7 @@ void append(LINKED_LIST* list, NODE* node) {
 }
 
 void printItem(ITEM item) {
-	printf("{'%s': '%x'}", item.key, item.value);
+	printf("{'%s': 0x%x, %p}", item.key, item.value);
 }
 
 void printList(LINKED_LIST* list) {

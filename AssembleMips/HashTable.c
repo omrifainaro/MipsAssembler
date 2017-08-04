@@ -20,21 +20,21 @@ HASHTABLE* newTable(int size) {
 	return table;
 }
 
-void insert(HASHTABLE* table, ITEM item) {
+void insertTable(HASHTABLE* table, ITEM item) {
 	unsigned int index = hashkey(item.key, table->size);
 	append(table->elements[index], newNode(item));
 }
 
-int getValue(HASHTABLE* table, char key[]) {
+int getValueTable(HASHTABLE* table, char key[]) {
 	int index = hashkey(key, table->size);
 	LINKED_LIST* list = table->elements[index];
-	NODE* cur = list->first;
-	for (; cur != NULL; cur = cur->next) {
-		if (isEqual(cur->item, key)) {
-			return cur->item.value;
-		}
-	}
-	return NOT_IN_HASH_TABLE;
+	return getValueList(list, key);
+}
+
+ITEM* getItemTable(HASHTABLE* table, char key[]) {
+	int index = hashkey(key, table->size);
+	LINKED_LIST* list = table->elements[index];
+	return getItemList(list, key);
 }
 
 void printTable(HASHTABLE* table) {
