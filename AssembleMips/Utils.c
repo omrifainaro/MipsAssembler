@@ -12,3 +12,7 @@ void toUpper(char* str) {
 		str[i] = uppercase(str[i]);
 	}
 }
+
+void reverseFirstToken(char str[]) {
+	*(str + strlen(str)) = ' ';
+}

@@ -43,7 +43,7 @@ ITEM* getItemList(LINKED_LIST* list, char key[]) {
 	return &err;
 }
 
-void append(LINKED_LIST* list, NODE* node) {
+void appendList(LINKED_LIST* list, NODE* node) {
 	if (list->first == NULL) {
 		list->first = node;
 	}

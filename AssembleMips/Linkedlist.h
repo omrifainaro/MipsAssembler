@@ -27,7 +27,7 @@ NODE* newNode(ITEM item);
 ITEM newItem(char key[], int value, callback);
 int getValueList(LINKED_LIST* list, char key[]);
 ITEM* getItemList(LINKED_LIST* list, char key[]);
-void append(LINKED_LIST* list, NODE* node);
+void appendList(LINKED_LIST* list, NODE* node);
 void printList(LINKED_LIST* list);
 void printItem(ITEM item);
 int isEqual(ITEM item, char key[]);

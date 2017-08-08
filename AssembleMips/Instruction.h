@@ -45,15 +45,17 @@ typedef struct {
 } INST_INFO;
 
 INSTRUCTION dummyParse(char*);
-INSTRUCTION parseArithmeticInstruction(char instruction[]);
+INSTRUCTION parseArithmeticInstruction(char[]);
+INSTRUCTION parseArithmeticImmInstruction(char[]);
+INSTRUCTION parseShiftInstruction(char[]);
 
 static INST_INFO functionCode[NUMBER_OF_OPCODES] = {
-	{ 0x0, "SLL\0", dummyParse },
-	{ 0x2, "SRL\0", dummyParse },
-	{ 0x3, "SRA\0", dummyParse },
-	{ 0x4, "SLLV\0", dummyParse },
-	{ 0x6, "SRLV\0", dummyParse },
-	{ 0x7, "SRAV\0", dummyParse },
+	{ 0x0, "SLL\0", parseShiftInstruction },
+	{ 0x2, "SRL\0", parseShiftInstruction },
+	{ 0x3, "SRA\0", parseShiftInstruction },
+	{ 0x4, "SLLV\0", parseShiftInstruction },
+	{ 0x6, "SRLV\0", parseShiftInstruction },
+	{ 0x7, "SRAV\0", parseShiftInstruction },
 	{ 0x8, "JR\0", dummyParse },
 	{ 0x9, "JALR\0", dummyParse },
 	{ 0xb, "SYSCALL\0", dummyParse },
@@ -61,34 +63,34 @@ static INST_INFO functionCode[NUMBER_OF_OPCODES] = {
 	{ 0x11, "MTHI\0", dummyParse },
 	{ 0x12, "MFLO\0", dummyParse },
 	{ 0x13, "MTLO\0", dummyParse },
-	{ 0x18, "MULT\0", dummyParse },
+	{ 0x18, "MULT\0", parseArithmeticInstruction },
 	{ 0x19, "MULTU\0", dummyParse },
 	{ 0x1a, "DIV\0", dummyParse },
 	{ 0x1b, "DIVU\0", dummyParse },
 	{ 0x20, "ADD\0", parseArithmeticInstruction },
-	{ 0x21, "ADDU\0", dummyParse },
-	{ 0x22, "SUB\0", dummyParse },
-	{ 0x23, "SUBU\0", dummyParse },
-	{ 0x24, "AND\0", dummyParse },
-	{ 0x25, "OR\0", dummyParse },
-	{ 0x26, "XOR\0", dummyParse },
-	{ 0x27, "NOR\0", dummyParse },
-	{ 0x29, "SLTU\0", dummyParse },
-	{ 0x2a, "SLT\0", dummyParse },
+	{ 0x21, "ADDU\0", parseArithmeticInstruction },
+	{ 0x22, "SUB\0", parseArithmeticInstruction },
+	{ 0x23, "SUBU\0", parseArithmeticInstruction },
+	{ 0x24, "AND\0", parseArithmeticInstruction },
+	{ 0x25, "OR\0", parseArithmeticInstruction },
+	{ 0x26, "XOR\0", parseArithmeticInstruction },
+	{ 0x27, "NOR\0", parseArithmeticInstruction },
+	{ 0x29, "SLTU\0", parseArithmeticInstruction },
+	{ 0x2a, "SLT\0", parseArithmeticInstruction },
 	{ 0x2, "J\0", dummyParse },
 	{ 0x3, "JAL\0", dummyParse },
 	{ 0x4, "BEQ\0", dummyParse },
 	{ 0x5, "BNE\0", dummyParse },
 	{ 0x6, "BLEZ\0", dummyParse },
 	{ 0x7, "BGTZ\0", dummyParse },
-	{ 0x8, "ADDI\0", dummyParse },
-	{ 0x9, "ADDIU\0", dummyParse },
-	{ 0xa, "SLTI\0", dummyParse },
-	{ 0xb, "SLTIU\0", dummyParse },
-	{ 0xc, "ANDI\0", dummyParse },
-	{ 0xd, "ORI\0", dummyParse },
-	{ 0xe, "XORI\0", dummyParse },
-	{ 0xf, "LUI\0", dummyParse },
+	{ 0x8, "ADDI\0", parseArithmeticImmInstruction },
+	{ 0x9, "ADDIU\0", parseArithmeticImmInstruction },
+	{ 0xa, "SLTI\0", parseArithmeticImmInstruction },
+	{ 0xb, "SLTIU\0", parseArithmeticImmInstruction },
+	{ 0xc, "ANDI\0", parseArithmeticImmInstruction },
+	{ 0xd, "ORI\0", parseArithmeticImmInstruction },
+	{ 0xe, "XORI\0", parseArithmeticImmInstruction },
+	{ 0xf, "LUI\0", parseArithmeticImmInstruction },
 	{ 0x20, "LB\0", dummyParse },
 	{ 0x21, "LH\0", dummyParse },
 	{ 0x23, "LW\0", dummyParse },
@@ -102,3 +104,4 @@ static INST_INFO functionCode[NUMBER_OF_OPCODES] = {
 HASHTABLE* instructions;
 HASHTABLE* registers;
 void initInstructionsTable();
+void printInstruction(INSTRUCTION parsed);

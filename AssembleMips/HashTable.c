@@ -22,7 +22,7 @@ HASHTABLE* newTable(int size) {
 
 void insertTable(HASHTABLE* table, ITEM item) {
 	unsigned int index = hashkey(item.key, table->size);
-	append(table->elements[index], newNode(item));
+	appendList(table->elements[index], newNode(item));
 }
 
 int getValueTable(HASHTABLE* table, char key[]) {

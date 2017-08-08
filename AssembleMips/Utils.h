@@ -5,5 +5,6 @@
 
 char uppercase(char c);
 void toUpper(char* str);
+void reverseFirstToken(char str[]);
 
 #endif
